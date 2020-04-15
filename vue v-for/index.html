@@ -1,0 +1,35 @@
+
+<!-- Put this in the HTML section in JSFiddle! -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+<div id="app">
+  <ul>
+    <li v-for='(ingradient, i ) in ingradients' :key='ingradient'>
+      {{ ingradient }} ({{ i }})
+    </li>
+  </ul>
+  
+  <button @click="ingradients.push('spices')">
+    Add New
+  </button>
+  
+  <hr>
+  <ul>
+    <li v-for='person in persons'>
+      <div v-for='(value, key, index ) in person'>
+        {{key}} : {{value}} ({{index}})
+      </div>
+    </li>
+  </ul>
+  <!-- <span v-for='n in 10'>{{n}}</span> -->
+  
+  <hr>
+  <template v-for='(ingradient, index ) in ingradients'>
+    <h1>
+      {{ ingradient }}
+    </h1>
+    <p>
+      {{ index }}
+    </p>
+  </template>
+</div>

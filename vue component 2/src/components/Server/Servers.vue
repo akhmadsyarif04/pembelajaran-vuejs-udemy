@@ -1,0 +1,22 @@
+<template>
+    <div class="col-xs-12 col-sm-6">
+        <ul class="list-group">
+            <li
+                    class="list-group-item"
+                    v-for="index in 5" :key="index">
+                Server #{{ index }}
+            </li>
+        </ul>
+    </div>
+</template>
+
+<script>
+</script>
+
+<style scoped>
+/* style disini jika tidak ditambah scope maka sifat nya adalah global */
+
+    div{
+        border: 1px solid blue;
+    }
+</style>
