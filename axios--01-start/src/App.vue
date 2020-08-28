@@ -13,6 +13,7 @@
       'app-header': Header
     },
     created() {
+      console.log('tess')
       this.$store.dispatch('tryAutoLogin')
     },
   }

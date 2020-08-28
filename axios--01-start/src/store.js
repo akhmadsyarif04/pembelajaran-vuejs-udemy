@@ -31,8 +31,8 @@ export default new Vuex.Store({
       setTimeout(() => { // setika 1jam akan logout
         commit('clearAuthData') 
         router.replace('/signin') // redirect ke signin
-      // }, expiredTime * 1000) // mengubah dari milidetik ke detik
-      }, expiredTime) // disini mencoba auto logout dalam 3,6detik
+      }, expiredTime * 1000) // mengubah dari milidetik ke detik
+      // }, expiredTime) // disini mencoba auto logout dalam 3,6detik
     },
     signup ({commit, dispatch}, authData) {
       axios.post('/accounts:signUp?key=AIzaSyACbpP43xv3it2h4N_Edl5naMTn22vdZPk', {
@@ -81,7 +81,7 @@ export default new Vuex.Store({
         localStorage.setItem('token', res.data.idToken)
         localStorage.setItem('userId', res.data.userId)
         localStorage.setItem('expireDate', expireDate)
-
+        console.log('localStorage' + localStorage.getItem('expireDate'))
 
         commit('authUser', {
           token: res.data.idToken,
@@ -102,6 +102,9 @@ export default new Vuex.Store({
       })
     },
     tryAutoLogin({commit}) {
+      const now = new Date()
+      console.log(now)
+
       const token = localStorage.getItem('token')
       const userId = localStorage.getItem('userId')
       const expireDate = localStorage.getItem('expireDate')
@@ -109,7 +112,7 @@ export default new Vuex.Store({
       if (!token) {
         return
       }
-      const now = new Date()
+      
       if (now >= expireDate) {
         return
       }
